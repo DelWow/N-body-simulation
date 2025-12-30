@@ -80,9 +80,7 @@ r
 
 Integration: Positions and velocities are stepped forward each frame (simple explicit integration).
 
-Rendering:
-
-Scatter shows body positions.
+Rendering: Scatter shows body positions.
 
 Trails: Each body appends its latest (x, y) into a fixed-length deque; corresponding Line2D objects are updated.
 
@@ -94,39 +92,8 @@ Animation: FuncAnimation(fig, updateOverTime, ...) repeatedly calls an update fu
 
 *An example snapshot of the flow field during the simulation.*
 
-## Code Explanation
 
-### Functions
 
-- **`distance(x1, y1, x2, y2)`**: Calculates the Euclidean distance between two points.
-- **`main()`**: The main function where the simulation is set up and executed.
-
-### Key Variables
-
-- **`F`**: Distribution function representing particle probabilities in each lattice direction.
-- **`rho`**: Fluid density at each lattice point.
-- **`ux`, `uy`**: Fluid velocity components in x and y directions.
-- **`Feq`**: Equilibrium distribution function used in the collision step.
-
-### Lattice Velocities and Weights
-
-Defined for the D2Q9 model (2 dimensions, 9 velocities):
-
-```python
-cxs = np.array([0, 0, 1, 1, 1, 0, -1, -1, -1])
-cys = np.array([0, 1, 1, 0, -1, -1, -1, 0, 1])
-weights = np.array([4/9, 1/9, 1/36, 1/9, 1/36, 1/9, 1/36, 1/9, 1/36])
-```
-
-### Simulation Steps
-
-1. **Initialization**: Set up the initial conditions for `F`, `rho`, and the cylinder obstacle.
-2. **Main Loop**: Iterate over time steps:
-   - **Streaming (Drift)**: Shift the distribution functions according to their velocities.
-   - **Boundary Conditions**: Apply reflective boundary conditions at the cylinder surface.
-   - **Collision**: Relax the distribution functions towards equilibrium (`Feq`).
-   - **Macroscopic Variables**: Compute density and velocity fields.
-   - **Visualization**: Plot the curl of the velocity field at specified intervals.
 
 
 ## License
