@@ -12,7 +12,6 @@ This project is a compact, NumPy-powered N-body gravitational simulation with so
 - [Run](#run)
 - [Simulation Parameters](#simulation-parameters)
 - [How it works](#how-it-works)
-- [Customize](#customize)
 - [License](#license)
 
 ## Features
